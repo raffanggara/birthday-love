@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: #ff4d6d;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+img {
+  width: 200px;
+  margin-top: 20px;
+}
+
+/* glow */
+h1, h2 {
+  text-shadow: 0 0 10px #ff4d6d, 0 0 30px #ff4d6d;
+}
+
+/* LOVE PARTICLE */
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
