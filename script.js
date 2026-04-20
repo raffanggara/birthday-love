@@ -1,81 +1,65 @@
-// ===== MATRIX =====
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+// MATRIX BACKGROUND
+const c = document.getElementById("matrix");
+const ctx = c.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+c.width = window.innerWidth;
+c.height = window.innerHeight;
 
-const letters = "❤️01";
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+let letters = "❤️01";
+let fontSize = 16;
+let columns = c.width / fontSize;
+let drops = Array(Math.floor(columns)).fill(1);
 
 function draw() {
   ctx.fillStyle = "rgba(0,0,0,0.05)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0,0,c.width,c.height);
 
   ctx.fillStyle = "#ff4d6d";
   ctx.font = fontSize + "px monospace";
 
-  drops.forEach((y, i) => {
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    ctx.fillText(text, i * fontSize, y * fontSize);
+  drops.forEach((y,i)=>{
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, y*fontSize);
 
-    if (y * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
+    if(y*fontSize > c.height && Math.random() > 0.975){
+      drops[i]=0;
     }
     drops[i]++;
   });
 }
 setInterval(draw, 33);
 
-// ===== COUNTDOWN =====
+// COUNTDOWN
 let count = 3;
-const countdownEl = document.getElementById("countdown");
-const messageEl = document.getElementById("message");
-const finalEl = document.getElementById("final");
-const music = document.getElementById("music");
+let music = document.getElementById("music");
 
-const interval = setInterval(() => {
+const countEl = document.getElementById("count");
+const msg = document.getElementById("msg");
+const qrbox = document.getElementById("qrbox");
+
+setInterval(()=>{
   count--;
-  countdownEl.innerText = count;
+  countEl.innerText = count;
 
-  if (count === 0) {
-    clearInterval(interval);
-    countdownEl.style.display = "none";
-    messageEl.classList.remove("hidden");
+  if(count === 0){
+    countEl.style.display="none";
+    msg.classList.remove("hidden");
 
-    music.play().catch(()=>{}); // autoplay (butuh klik dulu di HP)
+    music.play().catch(()=>{});
 
-    setTimeout(() => {
-      finalEl.classList.remove("hidden");
+    setTimeout(()=>{
+      qrbox.classList.remove("hidden");
       generateQR();
-    }, 2000);
+    },2000);
   }
-}, 1000);
+},1000);
 
-// ===== QR =====
-function generateQR() {
+// QR
+function generateQR(){
   const qr = document.getElementById("qr");
 
-  const link = "https://raffanggara.github.io/birthday-love/love.html";
+  const link = "https://USERNAME.github.io/birthday-love/love.html";
 
-  qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" 
-    + encodeURIComponent(link);
-}
-
-// ===== LOVE EXPLOSION =====
-function explode(e) {
-  for (let i = 0; i < 10; i++) {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.className = "heart";
-
-    heart.style.left = e.clientX + "px";
-    heart.style.top = e.clientY + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 1000);
-  }
+  qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="
+  + encodeURIComponent(link);
 }
