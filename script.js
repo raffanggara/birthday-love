@@ -58,7 +58,7 @@ setInterval(()=>{
 function generateQR(){
   const qr = document.getElementById("qr");
 
-  const link = "https://USERNAME.github.io/birthday-love/love.html";
+  const link = "https://raffanggara.github.io/birthday-love/love.html";
 
   qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="
   + encodeURIComponent(link);
