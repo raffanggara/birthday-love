@@ -1,9 +1,10 @@
 body {
   margin: 0;
   overflow: hidden;
-  font-family: Arial, sans-serif;
   background: black;
+  font-family: Arial;
   color: #ff4d6d;
+  text-align: center;
 }
 
 canvas {
@@ -16,16 +17,12 @@ canvas {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  transform: translate(-50%,-50%);
 }
 
 h1 {
-  font-size: 100px;
-}
-
-h2 {
-  font-size: 30px;
+  font-size: 90px;
+  text-shadow: 0 0 20px #ff4d6d;
 }
 
 .hidden {
@@ -34,25 +31,5 @@ h2 {
 
 img {
   width: 200px;
-  margin-top: 20px;
-}
-
-/* glow */
-h1, h2 {
-  text-shadow: 0 0 10px #ff4d6d, 0 0 30px #ff4d6d;
-}
-
-/* LOVE PARTICLE */
-.heart {
-  position: absolute;
-  color: #ff4d6d;
-  font-size: 20px;
-  animation: floatUp 1s ease-out forwards;
-}
-
-@keyframes floatUp {
-  to {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
+  margin-top: 10px;
 }
