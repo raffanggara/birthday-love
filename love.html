@@ -1,39 +1,86 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>For You ❤️</title>
-  <style>
-    body {
-      background: black;
-      color: #ff4d6d;
-      font-family: Arial;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-    .box {
-      max-width: 400px;
-      animation: fadeIn 2s;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle,#1a001a,black);
+  font-family: Arial;
+  color: white;
+  text-align: center;
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh); }
+  to { transform: translateY(110vh); }
+}
+
+/* center */
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+h1 {
+  color: #ff4d6d;
+  text-shadow: 0 0 20px #ff4d6d;
+  font-size: 40px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff4d6d; }
+  to { text-shadow: 0 0 30px #ff4d6d; }
+}
+
+p {
+  opacity: 0;
+  animation: fade 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fade {
+  to { opacity: 1; }
+}
+</style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>❤️</h1>
-    <p>
-      Selamat ulang tahun yaa sayangg 🥺💖<br><br>
-      Semoga kamu selalu bahagia, sehat,  
-      dan apa yang mau dicapai cepat tercapai ✨<br><br>
-      Aku beruntung banget punya kamu dip, walaupun sudah hatees dek 💌
-    </p>
-  </div>
+
+<div class="box">
+  <h1>❤️ Happy Birthday ❤️</h1>
+  <p>
+    dipaa makasih sudah mau denngan ku di umurmu yang kemarin itu ✨<br>
+    Semoga selalu bahagia dek i love u fulll 💖<br>
+    Aku sayang kamu ❤️
+  </p>
+</div>
+
+<script>
+// floating hearts
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(10+Math.random()*30)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},200);
+</script>
+
 </body>
 </html>
